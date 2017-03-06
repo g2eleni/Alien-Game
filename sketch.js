@@ -1,7 +1,10 @@
 
 // x position variable
 var xpos = 0;
+var xpos2 = 0;
 var A = 2;
+var ypos = 400;
+var B = 2;
  
 function setup() 
 {
@@ -16,12 +19,19 @@ function draw()
   background(22, 124, 168);
   ellipseMode(CENTER);
     
-  xpos = xpos + 2;
+  xpos = xpos + A;
     
   if(xpos > width)
   {
-    xpos = 0;
+    A = -A;
   }
+    
+  if(xpos <= 0)
+  {
+    A = -A;
+  }
+  
+  //body
     
   fill(20, 152, 194);
   noStroke(0);
@@ -40,7 +50,7 @@ function draw()
   noStroke(0);
   rect(800, 0, 200, 500)
   
-
+//body
     
     
   fill(215);
@@ -70,6 +80,8 @@ function draw()
   fill(0);
   stroke(0);
   line((xpos + 50), 50, (xpos + 35), 85);
+  
+  //lasers heads
    
   if (mouseIsPressed)
       fill(255, 0, 0);
@@ -84,6 +96,8 @@ function draw()
       fill(205, 224, 76);
   stroke(0);
   ellipse((xpos+50), 50, 10, 10); 
+  
+  //laser beams
     
   fill(255);
   stroke(255, 0, 0);
@@ -93,44 +107,54 @@ function draw()
   stroke(255, 0, 0);
   line((xpos+50), 50, mouseY, mouseX);
  
-    
   fill(18, 115, 15);
   noStroke();
   rect(0,400,1000,200);
-    
- if (mouseX>=mouseY){
-   A=-A
- }
   
+  
+  
+    
+  if (mouseIsPressed){
+  ypos = ypos - B;
+  }
+  
+ 
+   xpos2 = xpos2 + B;
+   
+  if(xpos2 > 500)
+  {
+    B = -B;
+  }
+    
+  if(xpos2 <= 0)
+  {
+    B = -B;
+  }
+  
+  
+  //body
   fill(255);
   noStroke(0);
-  ellipse((xpos*A), 400, 15, 15);
-  ellipse(((xpos*A)-5), 400, 20, 15);
-  ellipse(((xpos*A)+5), 400, 15, 20);
-  ellipse(((xpos*A)), 395, 15, 20);
-  ellipse(((xpos*A)+10), 400, 15, 20);
-  ellipse(((xpos*A)+10), 395, 20, 15);
-  ellipse(((xpos*A)+19), 390, 3, 3);
-    
+  ellipse((xpos2*2), (ypos), 15, 15);
+  ellipse(((xpos2*2)-5), (ypos), 20, 15);
+  ellipse(((xpos2*2)+5), (ypos), 15, 20);
+  ellipse(((xpos2*2)), (ypos-5), 15, 20);
+  ellipse(((xpos2*2)+10), (ypos), 15, 20);
+  ellipse(((xpos2*2)+10), (ypos-5), 20, 15);
+  ellipse(((xpos2*2)+19), (ypos-10), 3, 3);
+  
+  //head and legs
   fill(0);
   noStroke(0);
-  ellipse(((xpos*A)+20), 387, 18, 10);
-  ellipse(((xpos*A)+19), 383, 5, 12);
-  ellipse(((xpos*A)+12), 385, 5, 12);
-  ellipse(((xpos*A)+12), 415, 3, 18);
-  ellipse(((xpos*A)-5), 415, 3, 18);
+  ellipse(((xpos2*2)+20), (ypos-13), 18, 10);
+  ellipse(((xpos2*2)+19), (ypos-17), 5, 12);
+  ellipse(((xpos2*2)+12), (ypos-15), 5, 12);
+  ellipse(((xpos2*2)+12), (ypos+15), 3, 18);
+  ellipse(((xpos2*2)-5), (ypos+15), 3, 18);
   
   fill(255);
   noStroke(0);
-  ellipse(((xpos*A)+19), 387, 3, 3);
+  ellipse(((xpos2*2)+19), (ypos-15), 3, 3);
     
-  fill(255);
-  stroke(255, 0, 0);
-  line((xpos-50), 50, mouseX, mouseY);
-    
-  fill(255);
-  stroke(255, 0, 0);
-  line((xpos+50), 50, mouseY, mouseX); 
- 
 }
 
